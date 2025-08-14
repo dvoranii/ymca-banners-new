@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="ad.size" content="width=320,height=100" />
+   <meta
+     name="viewport"
+     content="width=device-width, initial-scale=1 user-scalable=no"
+   />
+
+
+   <script type="text/javascript">
+     var clickTag = '';
+   </script>
+
+
+   <style type="text/css">
+     html,
+     body {
+       padding: 0;
+       margin: 0;
+       width: 100%;
+       height: 100%;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       background: #222;
+     }
+     body::before,
+     body::after {
+       display: block;
+       content: '';
+       flex: 2;
+     }
+     body::after {
+       flex: 3;
+     }
+     img,
+     span,
+     svg {
+       border: none;
+       position: absolute;
+       display: block;
+       top: 0;
+     }
+     
+     [class*='-scene'] {
+       opacity: 0;
+     }
+
+     [data-scene='0'] .-scene0,
+     [data-scene='1'] .-scene1,
+     [data-scene='2'] .-scene2,
+     [data-scene='3'] .-scene3,
+     [data-scene='4'] .-scene4,
+     [data-scene='5'] .-scene5,
+     [data-scene='6'] .-scene6,
+     [data-scene='7'] .-scene7,
+     [data-scene='8'] .-scene8,
+     [data-scene='9'] .-scene9 {
+       opacity: 1;
+       transform: none;
+     }
+     span > span,
+     span > img {
+       opacity: 1;
+     }
+
+
+     #canvas {
+       display: block;
+       margin: 0 auto;
+       overflow: hidden;
+       position: relative;
+       flex: none;
+       width: 100%;
+       height: 100%;
+       box-shadow: 0 0 160px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
+     }
+     #canvas:after {
+       content: '';
+       display: block;
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       z-index: 9999999;
+       transform: translateZ(1px);
+     }
+
+
+     #canvas {
+       background: #ffffff;
+       position: relative;
+     }
+
+
+     #canvas::after {
+       box-shadow: 0 0 0 1px black inset;
+       pointer-events: none;
+     }
+
+
+     .frame {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       opacity: 0;
+       transition: opacity 1s ease;
+     }
+
+
+     .bg-circle {
+       position: absolute;
+       background-color: #00aeef;
+       clip-path: circle(79% at 49% 4%);
+       width: 100%;
+       height: 100%;
+       margin-top: -260px;
+     }
+
+
+     .cta-btn {
+       border-radius: 20px;
+       border: none;
+       color: white;
+       font-weight: bold;
+       background: #00aeef;
+       letter-spacing: 1px;
+       padding: 6px 20px;
+       font-size: 14px;
+       font-family: 'Arial';
+     }
+
+
+     [data-scene='1'] .-scene1 {
+       opacity: 1;
+     }
+
+
+     [data-scene='2'] .-scene2 {
+       opacity: 1;
+     }
+
+
+     [data-scene='3'] .-scene3 {
+       opacity: 1;
+     }
+
+
+     [data-scene='4'] .-scene4 {
+       opacity: 1;
+     }
+
+     @keyframes slideDownfadeIn {
+
+      from {
+        opacity:0;
+        transform: translateY(-2px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+     }
+
+     @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+     }
+
+     .fadeIn {
+        opacity: 0;
+     }
+
+    [data-scene="1"] .fadeIn{
+        animation: fadeIn 250ms ease-in 200ms forwards;
+    }
+
+    [data-scene="2"] .fadeIn,
+    [data-scene="3"] .fadeIn,
+    [data-scene="4"] .fadeIn {
+        opacity: 1;
+    }
+
+     .slideDownFadeIn {
+        opacity: 0; 
+      }
+
+     [data-scene="1"] .-scene1 .slideDownFadeIn,
+     [data-scene="2"] .-scene2 .slideDownFadeIn,
+     [data-scene="3"] .-scene3 .slideDownFadeIn,
+     [data-scene="4"] .-scene4 .slideDownFadeIn {
+        animation: slideDownfadeIn 250ms ease-in 200ms forwards;
+     }
+
+     [data-scene="4"] img[src*="shine-on-logo"]:not(.-scene4 *) {
+      display: none; 
+    }
+
+    .persistentFadeIn {
+        opacity: 0;
+        animation: slideDownfadeIn 250ms ease-in 200ms forwards;
+    }
+
+    [data-scene="1"] .persistentFadeIn {
+        animation: slideDownfadeIn 250ms ease-in 200ms forwards;
+    }
+
+    [data-scene="4"] .persistentFadeIn {
+        display: none;
+    }
+
+   </style>
+ </head>
+ <body>
+   <a
+     id="canvas"
+     href="javascript:window.open(window.clickTag)"
+     data-frames="[0.001,1,1,1,0.1]"
+     ,
+     data-duration="14000"
+     ,
+     data-iterations="1"
+   >
+    <div>
+     <div class="frame -scene1">
+       <img src="/320x100/assets/scene1-bg(320x100)@4x.png" style="width: 100%; max-width: 728px;" alt="" />
+       <img src="/320x100/assets/scene1-text2(320x100)@4x.png" class="slideDownFadeIn" style="width: 140px; top: 68px; left: 18px; animation-delay: 300ms;" alt="">
+     </div>
+
+     <div class="frame -scene2">
+       <img src="/320x100/assets/scene2-bg(320x100)@4x.png" style="width: 100%;" alt="" />
+        <img src="/320x100/assets/scene2-text(320x100)@4x.png" class="slideDownFadeIn" style="width: 126px; top: 68px; left: 18px; animation-delay: 200ms;" alt="">
+     </div>
+
+     <div class="frame -scene3">
+       <img src="/320x100/assets/scene3-bg(320x100)@4x.png" style="width: 100%;" alt="" />
+        <img src="/320x100/assets/scene3-text(320x100)@4x.png" class="slideDownFadeIn" style="width: 96px; top: 68px; left: 18px; animation-delay: 200ms;" alt="">
+     </div>
+
+     <img src="/320x100/assets/make-it-a-summer.png" class="persistentFadeIn" style="width: 127px; top: 21px; left: 19px;"/>
+    </div>
+
+     <div class="frame -scene4">
+       <img src="/320x100/assets/scene4-bg(320x100)@4x.png" style="width: 100%;" alt="" />
+       <img src="/320x100/assets/scene4-text1(320x100)@4x.png" class="slideDownFadeIn" style="width: 143px; left: 19px; top: 21px;" alt="">
+       <img src="/320x100/assets/scene4-text2(320x100)@4x.png" class="slideDownFadeIn" style="width: 64px; top: 70px; left: 20px; animation-delay: 400ms;" alt="">
+       <img src="/320x100/assets/scene4-text3(320x100)@4x.png" class="slideDownFadeIn" style="width: 71px; right: 162px; top: 68px; animation-delay: 600ms;" alt="">
+     </div>
+      <img src="/320x100/assets/shine-on(320x100)@4x.png" class="fadeIn" style="width: 38px; top: 47px; right: 103px;" alt="">
+   </a>
+
+
+   <script>
+     !(function () {
+       var s, y, m, b, o, l, i, c;
+       function u(e) {
+         if (((s = document.getElementById(e)), window.top === window)) {
+           var t = document.head
+             .querySelector('meta[name="ad.size"]')
+             .content.split(',');
+           (s.style.width = parseInt(t[0].split('=')[1], 10) + 'px'),
+             (s.style.height = parseInt(t[1].split('=')[1], 10) + 'px');
+         }
+         (b = o = parseInt(s.getAttribute('data-iterations'))),
+           this.reScale(
+             JSON.parse(s.getAttribute('data-frames')),
+             parseInt(s.getAttribute('data-duration'))
+           ),
+           (i = m.length - 1),
+           this.animate();
+       }
+       (u.prototype.reScale = function (t, e) {
+         l = o > 0 ? e / o : e;
+         var a = t.reduce(function (t, e) {
+           return t + e;
+         }, 0);
+         m = t.map(function (t) {
+           return (t / a) * l;
+         });
+       }),
+         (u.prototype.goToFrame = function (e) {
+           this.pause(), (b = 0), (i = e), s.setAttribute('data-scene', e);
+         }),
+         (u.prototype.next = function () {
+           return ++i !== m.length || ((i = 0), b--)
+             ? (s.setAttribute('data-scene', i), i)
+             : ((b = o - 1), (i = -1));
+         }),
+         (u.prototype.animate = function () {
+           -1 !== this.next() &&
+             (y = window.setTimeout(this.animate.bind(this), m[i]));
+         }),
+         (u.prototype.pause = function () {
+           y && clearTimeout(y);
+         }),
+         (c = function () {
+           (window.banner = new u('canvas')),
+             document.body.setAttribute('class', 'loaded');
+         }),
+         'loading' !== document.readyState
+           ? c()
+           : document.addEventListener('DOMContentLoaded', c);
+     })();
+   </script>
+ </body>
+</html>
