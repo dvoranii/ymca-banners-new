@@ -284,18 +284,35 @@
         animation: ctaTextFadeIn 300ms ease-in forwards;
         animation-delay: 1s;
       }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(1);
+        }
+
+        to {
+          transform: scale(1.1);
+        }
+      }
+
+      .zoom-bg {
+        transform-origin: center center;
+        will-change: transform;
+        transform: scale(1);
+        animation: zoomIn 12s ease forwards;
+      }
     </style>
   </head>
   <body>
     <a
       id="canvas"
       href="javascript:window.open(window.clickTag)"
-      data-frames="[0.25,0.25,0.1]"
-      data-duration="15000"
+      data-frames="[0.5,0.5,0.1]"
+      data-duration="10000"
       data-iterations="1"
     >
       <div class="frame -scene0">
-        <img src="/300x250/assets/BG.png" class="bg-image" />
+        <img src="/300x250/assets/BG.png" class="bg-image zoom-bg" />
         <img
           src="/300x250/assets/greater-together-text.png"
           style="width: 63%; top: 50%; transform: translateY(-50%); z-index: 2"
