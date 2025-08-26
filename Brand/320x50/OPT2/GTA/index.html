@@ -146,6 +146,25 @@
         animation: fadeInSlideUp 400ms ease-out 300ms forwards;
       }
 
+      /* Diagonal swipe transition */
+      .diagonal-swipe {
+        position: absolute;
+        top: -96px;
+        left: -188%;
+        width: 243.42%;
+        height: 660%;
+        background: white;
+        transform: rotate(45deg);
+        transform-origin: center center;
+        z-index: 10;
+        transition: left 0.8s ease-in-out;
+        z-index: 0;
+      }
+
+      [data-scene="1"] .diagonal-swipe {
+        left: -73%;
+      }
+
       /* Text animations */
       .text-element {
         font-family: Arial, sans-serif;
@@ -165,6 +184,20 @@
         }
       }
 
+      [data-scene="1"] .-scene1 .logo-2 {
+        animation: fadeIn 200ms ease-in forwards;
+        animation-delay: 200ms;
+      }
+
+      [data-scene="2"] .-scene2 .logo-2 {
+        opacity: 1;
+      }
+
+      [data-scene="1"] .-scene1 .text2,
+      [data-scene="1"] .-scene1 .shadow {
+        animation: fadeIn 200ms ease-in forwards;
+        animation-delay: 400ms;
+      }
 
       .ymca-logo {
         opacity: 0;
@@ -172,6 +205,13 @@
         z-index: 9;
         top: 22px;
         right: 2px;
+      }
+
+      .logo-2 {
+        opacity: 0;
+        top: 23%;
+        width: 29%;
+        right: 0px;
       }
 
       .bg-img-corner {
@@ -184,6 +224,28 @@
       .bg-image {
         width: 100%;
         height: 100%;
+      }
+
+      @keyframes ctaTextFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .cta-text {
+        opacity: 0;
+      }
+
+      [data-scene="1"] .-scene1 .cta-btn {
+        animation: ctaButtonGrow 600ms ease-out 600ms forwards;
+      }
+
+      [data-scene="1"] .-scene1 .cta-text {
+        animation: ctaTextFadeIn 300ms ease-in forwards;
+        animation-delay: 1s;
       }
 
       @keyframes zoomIn {
@@ -208,12 +270,15 @@
     <a
       id="canvas"
       href="javascript:window.open(window.clickTag)"
-      data-frames="[0.1]"
-      data-duration="10000"
+      data-frames="[0.5,0.1]"
+      data-duration="8000"
       data-iterations="1"
     >
       <div class="frame -scene0">
-        <img src="/Brand/320x50/OPT2/GTA/assets/BG.png" class="bg-image zoom-bg" />
+        <img
+          src="/Brand/320x50/OPT2/GTA/assets/BG.png"
+          class="bg-image zoom-bg"
+        />
         <img
           src="/Brand/320x50/OPT2/GTA/assets/scene1-text-shadow.png"
           style="width: 63%; top: 54%; transform: translateY(-50%); z-index: 2"
@@ -225,8 +290,26 @@
           class="fadeIn bg-img-corner"
           alt=""
         />
-        <img src="/Brand/320x50/OPT2/GTA/assets/Asset373.svg" class="ymca-logo logo" alt="" />
+        <img
+          src="/Brand/320x50/OPT2/GTA/assets/Asset373.svg"
+          class="ymca-logo logo"
+          alt=""
+        />
       </div>
+
+      <div class="diagonal-swipe"></div>
+      <div class="frame -scene1">
+        <img
+          src="/Brand/320x50/OPT2/GTA/assets/shine-on-logo-colour.svg"
+          class="logo-2"
+          alt=""
+        />
+        <img
+          class="cta-text"
+          src="/Brand/320x50/OPT2/GTA/assets/Asset307.svg"
+          style="width: 47%; top: 21px; left: 49px"
+          alt=""
+        />
       </div>
     </a>
 
